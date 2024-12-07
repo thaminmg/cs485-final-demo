@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Personal Website</title>
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet"
+        type="text/css" />
+    <link href="css/styles.css" rel="stylesheet" />
+    <script type="module" src="https://unpkg.com/deep-chat@2.0.1/dist/deepChat.bundle.js"></script>
+    
+</head>
+
+<body class="main-body" id="page-top">
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
+        <div class="container">
+            <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button"
+                data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded"
+                            href="index.html">Home</a></li>
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded"
+                            href="about.html">About</a></li>
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded"
+                            href="portfolio.html">Portfolio</a></li>
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded"
+                            href="contact.html">Contact</a></li>
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded"
+                            href="chatbot.html">Chatbot</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Chatbot Section-->
+    <section class="page-section" id="chatbot">
+        <div class="container">
+            <!-- Portfolio Section Heading-->
+            <h3 class="text-center text-uppercase text-secondary mb-0">Chatbot</h3>
+            <br><br>
+            <!-- Contact Section Form-->
+            <div class="row justify-content-center">
+                
+            <div class="col-lg-8 col-xl-5" id="divhere">
+                    <deep-chat 
+                        id="chat-element" style="border-radius: 10px; width: 60vh; height: calc(100vh - 230px);  padding-top: 10px;"
+                        messageStyles='{"default": {"user": {"bubble": {"backgroundColor": "#1abc9c"}}}}'
+                        avatars='{"ai": {"src": "assets/img/chatgpt.png"}, "user": {"src": "assets/img/reverse.png"}}' 
+                        >
+                    </deep-chat>
+            
+                </div>
+            </div>
+        
+        </div>
+
+    </section>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/scripts.js"></script>
+<script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+<script>
+    document.getElementById('chat-element').setAttribute('directConnection', JSON.stringify({
+        "openAI": {
+            "key": window.API_KEY,
+            "chat": { "max_tokens": 2000, "system_prompt": "Assist me with anything you can" }
+        }
+    }));
+</script>
+
+</body>
+<!-- !!Either set the script as "module" or place your code in a timeout in order to wait for the component to load -->
+<script type="module">
+    const elementRef = document.getElementById("chat-element");
+    // Setting value via a property (easiest way)
+    elementRef.history = [
+        { role: "user", text: "Hey, how are you today?" },
+        { role: "ai", text: "I am doing very well!" },
+    ];
+    elementRef.setAttribute(
+        "introMessage",
+        JSON.stringify({
+            text: "Demo for CS485 - 2024 Fall",
+        })
+    );
+</script>
+</html>
+
+
+
+
